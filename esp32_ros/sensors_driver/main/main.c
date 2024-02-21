@@ -52,8 +52,7 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time)
 		// Assigning static memory to the sequence
 		static int32_t memory[10];
 		send_msg.data.capacity = 10;
-		send_msg.data.data = memory;
-		send_msg.data.size = 0;
+		send_msg.data.data = memory;		send_msg.data.size = 0;
 
 		// Populate array with three integer data
 		send_msg.data.data[0] = curr_data.timestamps;
