@@ -1,0 +1,22 @@
+{
+    "idf.adapterTargetName": "esp32",
+    "files.associations": {
+        "string.h": "c",
+        "stdint.h": "c",
+        "servo.h": "c",
+        "pca9685.h": "c",
+        "stdio.h": "c",
+        "stdbool.h": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c",
+        "bitset": "c",
+        "chrono": "c",
+        "algorithm": "c",
+        "initializer_list": "c",
+        "utility": "c",
+        "vector": "c"
+    },
+    "idf.port": "/dev/ttyUSB0",
+    "idf.flashType": "UART"
+}
