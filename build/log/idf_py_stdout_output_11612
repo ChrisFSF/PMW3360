@@ -1,0 +1,46 @@
+-- Existing sdkconfig '/home/chris/Desktop/sample_project_pmw3360/sdkconfig' renamed to '/home/chris/Desktop/sample_project_pmw3360/sdkconfig.old'.
+-- Found Git: /usr/bin/git (found version "2.34.1") 
+-- The C compiler identification is GNU 12.2.0
+-- The CXX compiler identification is GNU 12.2.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /home/chris/.espressif/tools/xtensa-esp32-elf/esp-12.2.0_20230208/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chris/.espressif/tools/xtensa-esp32-elf/esp-12.2.0_20230208/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/chris/.espressif/tools/xtensa-esp32-elf/esp-12.2.0_20230208/xtensa-esp32-elf/bin/xtensa-esp32-elf-g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- git rev-parse returned 'fatal: not a git repository (or any of the parent directories): .git'
+-- Could not use 'git describe' to determine PROJECT_VER.
+-- Building ESP-IDF components for target esp32
+-- Project sdkconfig file /home/chris/Desktop/sample_project_pmw3360/sdkconfig
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stddef.h
+-- Looking for stddef.h - found
+-- Check size of time_t
+-- Check size of time_t - done
+-- Found Python3: /home/chris/.espressif/python_env/idf5.1_py3.10_env/bin/python (found version "3.10.12") found components: Interpreter 
+-- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS
+-- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS - Success
+-- App "auto_project" version: 1
+-- Adding linker script /home/chris/Desktop/sample_project_pmw3360/build/esp-idf/esp_system/ld/memory.ld
+-- Adding linker script /home/chris/esp/esp-idf/components/esp_system/ld/esp32/sections.ld.in
+-- Adding linker script /home/chris/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.ld
+-- Adding linker script /home/chris/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.api.ld
+-- Adding linker script /home/chris/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.libgcc.ld
+-- Adding linker script /home/chris/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.newlib-data.ld
+-- Adding linker script /home/chris/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.syscalls.ld
+-- Adding linker script /home/chris/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.newlib-funcs.ld
+-- Adding linker script /home/chris/esp/esp-idf/components/soc/esp32/ld/esp32.peripherals.ld
+-- Components: app_trace app_update bootloader bootloader_support bt cmock console cxx driver efuse esp-tls esp_adc esp_app_format esp_coex esp_common esp_eth esp_event esp_gdbstub esp_hid esp_http_client esp_http_server esp_https_ota esp_https_server esp_hw_support esp_lcd esp_local_ctrl esp_mm esp_netif esp_netif_stack esp_partition esp_phy esp_pm esp_psram esp_ringbuf esp_rom esp_system esp_timer esp_wifi espcoredump esptool_py fatfs freertos hal heap http_parser idf_test ieee802154 json log lwip main mbedtls mqtt newlib nvs_flash openthread partition_table perfmon protobuf-c protocomm pthread sdmmc soc spi_flash spiffs tcp_transport ulp unity usb vfs wear_levelling wifi_provisioning wpa_supplicant xtensa
+-- Component paths: /home/chris/esp/esp-idf/components/app_trace /home/chris/esp/esp-idf/components/app_update /home/chris/esp/esp-idf/components/bootloader /home/chris/esp/esp-idf/components/bootloader_support /home/chris/esp/esp-idf/components/bt /home/chris/esp/esp-idf/components/cmock /home/chris/esp/esp-idf/components/console /home/chris/esp/esp-idf/components/cxx /home/chris/esp/esp-idf/components/driver /home/chris/esp/esp-idf/components/efuse /home/chris/esp/esp-idf/components/esp-tls /home/chris/esp/esp-idf/components/esp_adc /home/chris/esp/esp-idf/components/esp_app_format /home/chris/esp/esp-idf/components/esp_coex /home/chris/esp/esp-idf/components/esp_common /home/chris/esp/esp-idf/components/esp_eth /home/chris/esp/esp-idf/components/esp_event /home/chris/esp/esp-idf/components/esp_gdbstub /home/chris/esp/esp-idf/components/esp_hid /home/chris/esp/esp-idf/components/esp_http_client /home/chris/esp/esp-idf/components/esp_http_server /home/chris/esp/esp-idf/components/esp_https_ota /home/chris/esp/esp-idf/components/esp_https_server /home/chris/esp/esp-idf/components/esp_hw_support /home/chris/esp/esp-idf/components/esp_lcd /home/chris/esp/esp-idf/components/esp_local_ctrl /home/chris/esp/esp-idf/components/esp_mm /home/chris/esp/esp-idf/components/esp_netif /home/chris/esp/esp-idf/components/esp_netif_stack /home/chris/esp/esp-idf/components/esp_partition /home/chris/esp/esp-idf/components/esp_phy /home/chris/esp/esp-idf/components/esp_pm /home/chris/esp/esp-idf/components/esp_psram /home/chris/esp/esp-idf/components/esp_ringbuf /home/chris/esp/esp-idf/components/esp_rom /home/chris/esp/esp-idf/components/esp_system /home/chris/esp/esp-idf/components/esp_timer /home/chris/esp/esp-idf/components/esp_wifi /home/chris/esp/esp-idf/components/espcoredump /home/chris/esp/esp-idf/components/esptool_py /home/chris/esp/esp-idf/components/fatfs /home/chris/esp/esp-idf/components/freertos /home/chris/esp/esp-idf/components/hal /home/chris/esp/esp-idf/components/heap /home/chris/esp/esp-idf/components/http_parser /home/chris/esp/esp-idf/components/idf_test /home/chris/esp/esp-idf/components/ieee802154 /home/chris/esp/esp-idf/components/json /home/chris/esp/esp-idf/components/log /home/chris/esp/esp-idf/components/lwip /home/chris/Desktop/sample_project_pmw3360/main /home/chris/esp/esp-idf/components/mbedtls /home/chris/esp/esp-idf/components/mqtt /home/chris/esp/esp-idf/components/newlib /home/chris/esp/esp-idf/components/nvs_flash /home/chris/esp/esp-idf/components/openthread /home/chris/esp/esp-idf/components/partition_table /home/chris/esp/esp-idf/components/perfmon /home/chris/esp/esp-idf/components/protobuf-c /home/chris/esp/esp-idf/components/protocomm /home/chris/esp/esp-idf/components/pthread /home/chris/esp/esp-idf/components/sdmmc /home/chris/esp/esp-idf/components/soc /home/chris/esp/esp-idf/components/spi_flash /home/chris/esp/esp-idf/components/spiffs /home/chris/esp/esp-idf/components/tcp_transport /home/chris/esp/esp-idf/components/ulp /home/chris/esp/esp-idf/components/unity /home/chris/esp/esp-idf/components/usb /home/chris/esp/esp-idf/components/vfs /home/chris/esp/esp-idf/components/wear_levelling /home/chris/esp/esp-idf/components/wifi_provisioning /home/chris/esp/esp-idf/components/wpa_supplicant /home/chris/esp/esp-idf/components/xtensa
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chris/Desktop/sample_project_pmw3360/build
