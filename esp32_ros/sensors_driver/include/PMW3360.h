@@ -1,11 +1,10 @@
 #ifndef PMW3360_H_
 #define PMW3360_H_
-
 #include "stdint.h"
 
 // Configurations
 // The CPI value should be in between 100 -- 12000
-#define CPI       10000
+#define CPI       1000
 #define PMW_3360_SPI_Frequency 8000000 // 1MHz
 
 // Registe
@@ -59,7 +58,10 @@
 #define Raw_Data_Burst  0x64
 #define LiftCutoff_Tune2  0x65
 
-#define PMW3360_CS_GPIO 5
+#define PMW3360_CS0 5
+#define PMW3360_CS1 17
+#define PMW3360_CS2 16
+
 #define PMW3360_SCLK_GPIO 18
 #define PMW3360_MISO_GPIO 19
 #define PMW3360_MOSI_GPIO 23
@@ -67,19 +69,25 @@
 
 typedef struct Motion_Data
 {
+    uint8_t cs_pin; // this is the GPIO CS pin
+    int motion;
+    float dx;
+    float dy;
     double x_dist;
     double y_dist;
     u_int64_t timestamps;
 
 }Motion_Data;
 
-void pmw3360_spi_init(int16_t GPIO_CS, int16_t GPIO_SCLK, int16_t GPIO_MISO, int16_t GPIO_MOSI);
+void pmw3360_spi_init(int16_t GPIO_SCLK, int16_t GPIO_MISO, int16_t GPIO_MOSI);
 
-void performStartup();
-void setCPI(int cpi);
-void upload_firmware();
-void data_collection_task();
-Motion_Data Get_Data();
+void performStartup(const uint8_t cs_num);
+void setCPI(const uint8_t cs_num, int cpi);
+void upload_firmware(const uint8_t cs_num);
+void start_data_collection_tasks();
+
+Motion_Data Get_Data(const uint8_t sensor_num);
+
 
 #endif
 

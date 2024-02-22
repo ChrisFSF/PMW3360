@@ -35,30 +35,52 @@ std_msgs__msg__Int32MultiArray send_msg;
 std_msgs__msg__Int32 recv_msg;
 
 static QueueHandle_t data_received_queue = NULL;
-static Motion_Data curr_data;
+static Motion_Data curr_data[3];
 
 void timer_callback(rcl_timer_t * timer, int64_t last_call_time)
 {
 	(void) last_call_time;
 	if (timer != NULL) {
 		RCSOFTCHECK(rcl_publish(&publisher, &send_msg, NULL));
-		curr_data = Get_Data();
-		printf("Time %.2fs, %.2f, %.2f\n", curr_data.timestamps / 100.0, curr_data.x_dist, curr_data.y_dist);
+		curr_data[0] = Get_Data(0);
+		curr_data[1] = Get_Data(1);
+		curr_data[2] = Get_Data(2);
 
-		send_msg.data.capacity = 10;
+		// printf("Time %.2fs, %.2f, %.2f, %.2f, %.2f\n", curr_data[1].timestamps / 100.0, curr_data[1].dx, curr_data[1].dy, curr_data[1].x_dist, curr_data[1].y_dist);
+
+		send_msg.data.capacity = 100;
 		send_msg.data.data = (int32_t*) malloc(send_msg.data.capacity * sizeof(int32_t));
 		send_msg.data.size = 0;
 
 		// Assigning static memory to the sequence
-		static int32_t memory[10];
-		send_msg.data.capacity = 10;
-		send_msg.data.data = memory;		send_msg.data.size = 0;
+		static int32_t memory[100];
+		send_msg.data.capacity = 100;
+		send_msg.data.data = memory;		
+		send_msg.data.size = 0;
 
 		// Populate array with three integer data
-		send_msg.data.data[0] = curr_data.timestamps;
-		send_msg.data.data[1] = curr_data.x_dist * 100;
-		send_msg.data.data[2] = curr_data.y_dist * 100;
-		send_msg.data.size = 3; // Update size of the array to 3
+		//sensor 1
+		send_msg.data.data[0] = curr_data[0].timestamps;
+		send_msg.data.data[1] = curr_data[0].dx     * 100000; // the higher of 10, the higher precision
+		send_msg.data.data[2] = curr_data[0].dy     * 100000;
+		send_msg.data.data[3] = curr_data[0].x_dist * 100000;
+		send_msg.data.data[4] = curr_data[0].y_dist * 100000;
+		
+		//sensor 2
+		send_msg.data.data[5] = curr_data[1].timestamps;
+		send_msg.data.data[6] = curr_data[1].dx     * 100000; // the higher of 10, the higher precision
+		send_msg.data.data[7] = curr_data[1].dy     * 100000;
+		send_msg.data.data[8] = curr_data[1].x_dist * 100000;
+		send_msg.data.data[9] = curr_data[1].y_dist * 100000;
+
+		//sensor 3
+		send_msg.data.data[10] = curr_data[2].timestamps;
+		send_msg.data.data[11] = curr_data[2].dx     * 100000; // the higher of 10, the higher precision
+		send_msg.data.data[12] = curr_data[2].dy     * 100000;
+		send_msg.data.data[13] = curr_data[2].x_dist * 100000;
+		send_msg.data.data[14] = curr_data[2].y_dist * 100000;
+
+		send_msg.data.size = 15; // Update size of the array to 15
 	}
 }
 
@@ -149,7 +171,9 @@ static void datain_process_task(void* arg){
 		if(xQueueReceive(data_received_queue, &data, portMAX_DELAY)){
 			printf("queue received %ld\n",data);
 			if (data <= 10000 && data >= 100){
-				setCPI(data);
+				setCPI(PMW3360_CS0, data);
+				setCPI(PMW3360_CS1, data);
+				setCPI(PMW3360_CS2, data);
 			}
 		}
 		vTaskDelay(10 / portTICK_PERIOD_MS);
@@ -170,10 +194,12 @@ void app_main(void)
     data_received_queue = xQueueCreate(200, sizeof(uint32_t));
     xTaskCreate(datain_process_task, "datain_process_task", 2048, NULL, 2, NULL);
 
-	pmw3360_spi_init(PMW3360_CS_GPIO, PMW3360_SCLK_GPIO, PMW3360_MISO_GPIO, PMW3360_MOSI_GPIO);
-    performStartup();
+    pmw3360_spi_init(PMW3360_SCLK_GPIO, PMW3360_MISO_GPIO, PMW3360_MOSI_GPIO);
+    performStartup(PMW3360_CS0);
+    performStartup(PMW3360_CS1);
+    performStartup(PMW3360_CS2);
 
-    xTaskCreate(data_collection_task, "data_collection_task", 2048, NULL, 2, NULL);
+    start_data_collection_tasks();   
 
     // pin micro-ros task in APP_CPU to make PRO_CPU to deal with wifi:
     xTaskCreate(micro_ros_task,

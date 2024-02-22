@@ -14,8 +14,11 @@
 void app_main(void)
 {
 
-    pmw3360_spi_init(PMW3360_CS_GPIO, PMW3360_SCLK_GPIO, PMW3360_MISO_GPIO, PMW3360_MOSI_GPIO);
-    performStartup();
-    data_collection_task();                                        
+    pmw3360_spi_init(PMW3360_SCLK_GPIO, PMW3360_MISO_GPIO, PMW3360_MOSI_GPIO);
+    performStartup(PMW3360_CS0);
+    performStartup(PMW3360_CS1);
+    performStartup(PMW3360_CS2);
+
+    start_data_collection_tasks();                                        
     printf("Finished Main\n");
 }
